@@ -14,14 +14,14 @@ namespace Tetris
                 ConsoleColor.Black,
                 ConsoleColor.Yellow,
                 ConsoleColor.Black,
-            }; 
+            };
             var piece = new Piece(3, 2, colors);
 
             while (true)
             {
                 Console.Clear();
                 piece.Show();
-                piece.Move(-1,0);
+                piece.Move(-1, 0);
                 Console.ReadLine();
             }
 
