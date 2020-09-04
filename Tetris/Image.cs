@@ -10,20 +10,22 @@ namespace Tetris
         private int _width;
         private int _height;
 
-        public Image(int width, int height)
+        public Image(int width, int height, ConsoleColor[] colors = null)
         {
             _height = height;
             _width = width;
-            _pixels = new ConsoleColor[width * height];
+            _pixels = colors ?? new ConsoleColor[width * height];
         }
 
-        public void Show()
+        public void Show(int offsetRow, int offsetCol)
         {
-            Console.Clear();
             for (var i = 0; i < _pixels.Length; i++)
             {
-                if (i > 0 && i % _width == 0) Console.WriteLine();
                 var color = _pixels[i];
+                var row = i / _width;
+                var col = i % _width;
+                Console.CursorTop = offsetRow + row;
+                Console.CursorLeft = offsetCol + col;
                 Console.ForegroundColor = color;
                 Console.Write("█");
             }
